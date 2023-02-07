@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sip_calculator/app/appbar/other_appbar.dart';
-
 import 'package:sip_calculator/app/const/colors.dart';
 import 'package:sip_calculator/app/widgets/mystring.dart';
 

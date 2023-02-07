@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/multi_calculator/fd_calculator.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/multi_calculator/loan_calculator.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/multi_calculator/ppf_calculator.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/multi_calculator/rd_calculator.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/multi_calculator/sip_calculator.dart';
 import 'package:sip_calculator/app/const/colors.dart';
-
-import '../../appbar/other_appbar.dart';
 
 class OtherCalculators extends StatefulWidget {
   const OtherCalculators({super.key});

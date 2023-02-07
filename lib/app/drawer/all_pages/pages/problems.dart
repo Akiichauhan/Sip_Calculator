@@ -6,7 +6,6 @@ import 'package:sip_calculator/app/appbar/other_appbar.dart';
 import 'package:sip_calculator/app/const/colors.dart';
 import 'package:sip_calculator/app/screens/dashbourd/dashbourd.dart';
 import 'package:sip_calculator/app/widgets/custom_btn.dart';
-import 'package:sip_calculator/app/widgets/mystring.dart';
 
 class Problems extends StatefulWidget {
   const Problems({super.key});
@@ -96,7 +95,7 @@ class filterChipWidget extends StatefulWidget {
 
 class _filterChipWidgetState extends State<filterChipWidget> {
   var _isSelected = false;
-  List Navigate = [
+  List Navigate = const [
     Dashbourd(),
     OtherCalculators(),
     OtherNotes(),
@@ -117,10 +116,11 @@ class _filterChipWidgetState extends State<filterChipWidget> {
       ),
       backgroundColor: const Color(0xffededed),
       onSelected: (isSelected) {
-        setState(() {
-          _isSelected = isSelected;
-        });
-        // Get.to(Navigate[2]);
+        setState(
+          () {
+            _isSelected = isSelected;
+          },
+        );
       },
       selectedColor: const Color(0xffeadffd),
     );

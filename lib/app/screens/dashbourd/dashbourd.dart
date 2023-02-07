@@ -24,6 +24,14 @@ class _DashbourdState extends State<Dashbourd>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
+  int _selectedIndex = 0;
+
+  final List<String> myBottomAppTitle = const [
+    "SIP Calculator",
+    "Other Calculator",
+    "Saved Calculator",
+  ];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,7 +50,7 @@ class _DashbourdState extends State<Dashbourd>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
-        title: "Calculator",
+        title: myBottomAppTitle[_selectedIndex],
         style: GoogleFonts.roboto(
           color: AppColors.blackColor,
         ),
@@ -76,7 +84,7 @@ class _DashbourdState extends State<Dashbourd>
         child: TabBarView(
           controller: _tabController,
           physics: const NeverScrollableScrollPhysics(),
-          children: [
+          children: const [
             TopTabbar(),
             OtherCalculators(),
             OtherNotes(),
@@ -86,6 +94,11 @@ class _DashbourdState extends State<Dashbourd>
       //https://www.youtube.com/watch?v=YJEMMhA9udQ
 
       bottomNavigationBar: TabBar(
+        onTap: (value) {
+          setState(() {
+            _selectedIndex = value;
+          });
+        },
         controller: _tabController,
         unselectedLabelColor: AppColors.blackColor,
         //labelColor: AppColors.PrimaryColor,
@@ -128,6 +141,12 @@ class TopTabbar extends StatefulWidget {
 class _TopTabbarState extends State<TopTabbar>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  int _tabSelectedIndex = 0;
+
+  final List<String> myTabAppTitle = const [
+    "SIP Calculator",
+    "Profit Calculator",
+  ];
 
   @override
   void initState() {
@@ -148,6 +167,11 @@ class _TopTabbarState extends State<TopTabbar>
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: TabBar(
+          onTap: (value) {
+            setState(() {
+              _tabSelectedIndex = value;
+            });
+          },
           controller: _tabController,
           indicatorWeight: 6.0,
           indicator: const UnderlineTabIndicator(
