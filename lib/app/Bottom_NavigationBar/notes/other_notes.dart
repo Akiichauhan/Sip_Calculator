@@ -16,7 +16,7 @@ class _OtherNotesState extends State<OtherNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: OtherAppbar(
+      /* appBar: OtherAppbar(
         leading: const Icon(
           Icons.arrow_back,
         ),
@@ -26,6 +26,7 @@ class _OtherNotesState extends State<OtherNotes> {
           color: AppColors.blackColor,
         ),
       ),
+      */
       body: Container(
         color: AppColors.notesTextColor,
         child: Center(

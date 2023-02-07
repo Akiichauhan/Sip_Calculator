@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sip_calculator/app/ALI_APP/mytab.dart';
 import 'package:sip_calculator/app/const/colors.dart';
 
 import 'app/screens/dashbourd/dashbourd.dart';
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
       color: AppColors.whiteColor,
       debugShowCheckedModeBanner: false,
       home: Dashbourd(),
+      //  home: MyTab(),
     );
   }
 }
+
+//git
+// https://www.youtube.com/watch?v=vRxfnHtCxEo

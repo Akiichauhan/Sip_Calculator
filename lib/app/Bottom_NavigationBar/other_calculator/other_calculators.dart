@@ -22,7 +22,9 @@ class _OtherCalculatorsState extends State<OtherCalculators> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: OtherAppbar(
+      /*    appBar: 
+    
+      OtherAppbar(
         mainColor: AppColors.whiteColor,
         leading: const Icon(
           Icons.arrow_back,
@@ -51,7 +53,7 @@ class _OtherCalculatorsState extends State<OtherCalculators> {
           ),
         ],
       ),
-
+*/
       // backgroundColor: AppColors.dashbourdSipTextColor,
       body: Padding(
         padding: const EdgeInsets.only(
