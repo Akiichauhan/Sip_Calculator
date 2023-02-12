@@ -135,14 +135,26 @@ class BuildGridView extends StatelessWidget {
                         color: colors[index],
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      height: 100,
-                      width: 220,
+                      // height: 100,
+                      //width: 220,
                       //margin: EdgeInsets.all(10.0),
-                      child: Image.asset(
-                        images[index],
-                        height: 20,
-                        width: 20,
-                        color: AppColors.SecondaryColor,
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.14,
+                        width: MediaQuery.of(context).size.height * 0.4,
+
+                        // decoration: BoxDecoration(
+                        //   image: DecorationImage(
+                        //     image: AssetImage(
+                        //       images[index],
+                        //     ),
+                        //   ),
+                        // ),
+                        child: Image.asset(
+                          images[index],
+                          // height: 20,
+                          //width: 20,
+                          color: AppColors.SecondaryColor,
+                        ),
                       ),
                     ),
                     const SizedBox(

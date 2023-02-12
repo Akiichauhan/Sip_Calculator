@@ -15,6 +15,7 @@ class AppColors {
   static const languageBottmRitchColor = Color(0xffC0D8EB);
 
   static const drawerContainerBGColor = Color(0xff33485D);
+  static const drawersubmenuappbarColor = Color(0xff1BBC9B);
 
   static const appbarTitileColor = Color(0xff676767);
   static const appbarShareColor = Color(0xff000000);

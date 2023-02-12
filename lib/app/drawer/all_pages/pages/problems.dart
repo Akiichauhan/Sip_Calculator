@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/notes/other_notes.dart';
 import 'package:sip_calculator/app/Bottom_NavigationBar/other_calculator/other_calculators.dart';
@@ -34,14 +36,23 @@ class _ProblemsState extends State<Problems> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.SecondaryColor,
-      appBar: const OtherAppbar(
+      backgroundColor: AppColors.whiteColor,
+      appBar: OtherAppbar(
+        mainColor: AppColors.tabBarabColor,
         centerTitle: true,
-        leading: Icon(
-          Icons.arrow_back,
-          color: AppColors.whiteColor,
+        leading: InkWell(
+          onTap: () {
+            Get.to(
+              const Dashbourd(),
+            );
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: AppColors.whiteColor,
+          ),
         ),
         title: "Feedback",
+        style: GoogleFonts.roboto(color: AppColors.whiteColor),
       ),
       body: Column(
         children: <Widget>[

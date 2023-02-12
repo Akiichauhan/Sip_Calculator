@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
@@ -53,6 +55,7 @@ class _DashbourdState extends State<Dashbourd>
         title: myBottomAppTitle[_selectedIndex],
         style: GoogleFonts.roboto(
           color: AppColors.blackColor,
+          fontSize: 18.0,
         ),
         actions: [
           const Padding(
@@ -140,8 +143,19 @@ class TopTabbar extends StatefulWidget {
 
 class _TopTabbarState extends State<TopTabbar>
     with SingleTickerProviderStateMixin {
+//https://www.youtube.com/watch?v=rQp2CzwY62s&list=PL4HwdDNslHMPp7slhmWcMJbDpYld6t2xe&index=3
+
+  final TextEditingController _principal = TextEditingController();
+  final TextEditingController _term = TextEditingController();
+  final TextEditingController _percentage = TextEditingController();
+  String result = "";
+  String _finalresult = "";
+  final _formkey = GlobalKey<FormState>();
+
   TabController? _tabController;
   int _tabSelectedIndex = 0;
+
+  double values = 50;
 
   final List<String> myTabAppTitle = const [
     "SIP Calculator",
@@ -197,204 +211,268 @@ class _TopTabbarState extends State<TopTabbar>
 
   Widget _mySip() {
     return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(20.0),
-        color: AppColors.whiteColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(
-                  Icons.cookie_outlined,
-                  color: AppColors.tabbarBorderColor,
-                ),
-                const SizedBox(
-                  width: 6.0,
-                ),
-                MyString(
-                  myText: "Monthly SIP Amount",
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.blackColor,
+      child: Form(
+        key: _formkey,
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          color: AppColors.whiteColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(
+                    Icons.cookie_outlined,
+                    color: AppColors.tabbarBorderColor,
                   ),
-                ),
-                const SizedBox(
-                  width: 30.0,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 30.0,
-                  width: 90.0,
-                  decoration: BoxDecoration(
-                    color: AppColors.dashbourdSipColor,
-                    borderRadius: BorderRadius.circular(6.0),
+                  const SizedBox(
+                    width: 6.0,
                   ),
-                  child: MyString(
-                    myText: "What is SIP?",
+                  MyString(
+                    myText: "Monthly SIP Amount",
                     style: GoogleFonts.roboto(
-                      color: AppColors.tabbarBorderColor,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.blackColor,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            IconInputText(
-              obscureText: false,
-              labelText: "labelText",
-              enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.tabBarabColor,
-                ),
-              ),
-              focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.tabbarBorderColor,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            MyString(
-              myText: "Five Thousend",
-              style: GoogleFonts.roboto(
-                color: AppColors.languagebottomTextColor,
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.percent,
-                  color: AppColors.tabbarBorderColor,
-                ),
-                const SizedBox(
-                  width: 6.0,
-                ),
-                MyString(
-                  myText: "Expected Gain % (Per Year)",
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.blackColor,
+                  const SizedBox(
+                    width: 30.0,
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            IconInputText(
-              obscureText: false,
-              labelText: "labelText",
-              enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.tabbarBorderColor,
-                ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30.0,
+                    width: 90.0,
+                    decoration: BoxDecoration(
+                      color: AppColors.dashbourdSipColor,
+                      borderRadius: BorderRadius.circular(6.0),
+                    ),
+                    child: MyString(
+                      myText: "What is SIP?",
+                      style: GoogleFonts.roboto(
+                        color: AppColors.tabbarBorderColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: AppColors.tabBarabColor,
-                ),
+              const SizedBox(
+                height: 10.0,
               ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              children: [
-                const Icon(
-                  Icons.calendar_month,
-                  color: AppColors.tabBarabColor,
-                ),
-                const SizedBox(
-                  width: 6.0,
-                ),
-                MyString(
-                  myText: "Sip Tenure",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.blackColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10.0,
-                ),
-                MyString(
-                  myText: "Years",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.blackColor,
-                    fontSize: 16.0,
-                  ),
-                ),
-                MyString(
-                  myText: "Years",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.blackColor,
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(
-                  width: 6.0,
-                ),
-                MyString(
-                  myText: "Steper",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.appbarTitileColor,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10.0,
-                ),
-                MyString(
-                  myText: "Adjust for\n Inflation?",
-                  style: GoogleFonts.roboto(
+              IconInputText(
+                controller: _principal,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Plz Enter Money";
+                  }
+                },
+                keyboardType: TextInputType.number,
+                obscureText: false,
+                labelText: "labelText",
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
                     color: AppColors.tabBarabColor,
-                    decoration: TextDecoration.underline,
                   ),
                 ),
-                const SizedBox(
-                  width: 70.0,
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.tabbarBorderColor,
+                  ),
                 ),
-                UIButton(
-                  width: 90.0,
-                  height: 36.0,
-                  color: AppColors.tabBarabColor,
-                  labelText: "Calculate",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.whiteColor,
-                    fontWeight: FontWeight.w500,
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              MyString(
+                myText: "Five Thousend",
+                style: GoogleFonts.roboto(
+                  color: AppColors.languagebottomTextColor,
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.percent,
+                    color: AppColors.tabbarBorderColor,
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
+                  const SizedBox(
+                    width: 6.0,
                   ),
-                )
-              ],
-            )
-          ],
+                  MyString(
+                    myText: "Expected Gain % (Per Year)",
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.blackColor,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              IconInputText(
+                controller: _percentage,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Plz Enter Percentage";
+                  }
+                },
+                keyboardType: TextInputType.number,
+                obscureText: false,
+                labelText: "Please Enter Percentage",
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.tabbarBorderColor,
+                  ),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.tabBarabColor,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.calendar_month,
+                    color: AppColors.tabBarabColor,
+                  ),
+                  const SizedBox(
+                    width: 6.0,
+                  ),
+                  MyString(
+                    myText: "Sip Tenure",
+                    style: GoogleFonts.roboto(
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom:
+                            BorderSide(color: AppColors.blackColor, width: 1.0),
+                      ),
+                    ),
+                    width: 50.0,
+                    child: IconInputText(
+                      counterText: "",
+                      controller: _term,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Plz Enter Year";
+                        }
+                      },
+                      keyboardType: TextInputType.number,
+                      maxLength: 2,
+                      obscureText: false,
+                      labelText: "Please Enter year",
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColors.tabbarBorderColor,
+                        ),
+                      ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColors.tabBarabColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  MyString(
+                    myText: "Years",
+                    style: GoogleFonts.roboto(
+                      color: AppColors.blackColor,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 6.0,
+                  ),
+                  Slider(
+                    // https://www.youtube.com/watch?v=vuw818gAlF8
+                    value: values,
+                    min: 0,
+                    max: 100,
+                    divisions: 100,
+                    activeColor: AppColors.tabbarBorderColor,
+
+                    inactiveColor: AppColors.tabbarBorderColor,
+                    onChanged: ((value) => setState(
+                          () => values = value,
+                        )),
+                  ),
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  MyString(
+                    myText: "Adjust for\n Inflation?",
+                    style: GoogleFonts.roboto(
+                      color: AppColors.tabBarabColor,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 70.0,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (_formkey.currentState!.validate()) {
+                          _finalresult = calculateData();
+                        }
+                      });
+                    },
+                    child: UIButton(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      color: AppColors.tabBarabColor,
+                      labelText: "Calculate",
+                      style: GoogleFonts.roboto(
+                        color: AppColors.whiteColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MyString(
+                  myText: _finalresult,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -538,13 +616,7 @@ class _TopTabbarState extends State<TopTabbar>
                 const SizedBox(
                   width: 10.0,
                 ),
-                MyString(
-                  myText: "Years",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.blackColor,
-                    fontSize: 16.0,
-                  ),
-                ),
+                //  IconInputText(labelText: "labelText"),
                 MyString(
                   myText: "Years",
                   style: GoogleFonts.roboto(
@@ -555,11 +627,17 @@ class _TopTabbarState extends State<TopTabbar>
                 const SizedBox(
                   width: 6.0,
                 ),
-                MyString(
-                  myText: "Steper",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.appbarTitileColor,
-                  ),
+                Slider(
+                  // https://www.youtube.com/watch?v=vuw818gAlF8
+                  value: values,
+                  min: 0,
+                  max: 100,
+                  divisions: 100,
+                  activeColor: AppColors.tabbarBorderColor,
+                  inactiveColor: AppColors.tabbarBorderColor,
+                  onChanged: ((value) => setState(
+                        () => values = value,
+                      )),
                 ),
                 const SizedBox(
                   width: 10.0,
@@ -583,17 +661,20 @@ class _TopTabbarState extends State<TopTabbar>
                 const SizedBox(
                   width: 70.0,
                 ),
-                UIButton(
-                  width: 90.0,
-                  height: 36.0,
-                  color: AppColors.tabBarabColor,
-                  labelText: "Calculate",
-                  style: GoogleFonts.roboto(
-                    color: AppColors.whiteColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
+                InkWell(
+                  onTap: () {},
+                  child: UIButton(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    color: AppColors.tabBarabColor,
+                    labelText: "Calculate",
+                    style: GoogleFonts.roboto(
+                      color: AppColors.whiteColor,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                   ),
                 )
               ],
@@ -602,5 +683,19 @@ class _TopTabbarState extends State<TopTabbar>
         ),
       ),
     );
+  }
+
+  String calculateData() {
+    double mymoney = double.parse(_principal.text);
+
+    double mypercentage = double.parse(_percentage.text);
+    double myyear = double.parse(_term.text);
+
+    double FinalAmount = mymoney + (mymoney * myyear * mypercentage) / 100;
+
+    String R =
+        // "Afert $_term years your Investment will be worth $FinalAmount  ";
+        "$FinalAmount";
+    return R;
   }
 }

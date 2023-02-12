@@ -24,6 +24,7 @@ class IconInputText extends StatelessWidget {
     this.focusedBorder,
     TextInputAction? textInputAction,
     this.inputFormatters,
+    this.counterText = "",
     this.onChanged,
   }) : super(key: key);
 
@@ -45,7 +46,7 @@ class IconInputText extends StatelessWidget {
   final Widget? prefix;
   final InputBorder? focusedBorder;
   final ValueChanged<String>? onChanged;
-
+  String counterText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -53,6 +54,7 @@ class IconInputText extends StatelessWidget {
 
       validator: validator,
       onChanged: onChanged,
+
       controller: controller,
       maxLength: maxLength,
       keyboardType: keyboardType,
@@ -62,6 +64,7 @@ class IconInputText extends StatelessWidget {
       style: GoogleFonts.roboto(
           fontWeight: FontWeight.w600, textStyle: const TextStyle()),
       decoration: InputDecoration(
+        counterText: counterText,
         focusedBorder: focusedBorder,
         enabledBorder: enabledBorder,
         prefixIcon: prefixIcon,

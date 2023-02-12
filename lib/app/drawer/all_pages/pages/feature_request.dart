@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sip_calculator/app/const/colors.dart';
 
@@ -7,7 +9,6 @@ import '../../../Bottom_NavigationBar/other_calculator/other_calculators.dart';
 import '../../../appbar/other_appbar.dart';
 import '../../../screens/dashbourd/dashbourd.dart';
 import '../../../widgets/custom_btn.dart';
-import 'problems.dart';
 
 class FeatureRequest extends StatefulWidget {
   const FeatureRequest({super.key});
@@ -37,12 +38,19 @@ class _FeatureRequestState extends State<FeatureRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.SecondaryColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: OtherAppbar(
         centerTitle: true,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: AppColors.whiteColor,
+        leading: InkWell(
+          onTap: () {
+            Get.to(
+              const Dashbourd(),
+            );
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: AppColors.whiteColor,
+          ),
         ),
         title: "Feture Request",
         style: GoogleFonts.roboto(),

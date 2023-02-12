@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sip_calculator/app/drawer/all_pages/pages/feature_request.dart';
 import 'package:sip_calculator/app/drawer/all_pages/pages/problems.dart';
+import 'package:sip_calculator/app/screens/dashbourd/dashbourd.dart';
 import 'package:sip_calculator/app/screens/language/my_lenguage.dart';
 
 import '../const/colors.dart';
@@ -50,6 +53,7 @@ class MyDrawer extends StatelessWidget {
           Column(
             children: [
               ListTile(
+                onTap: () => Get.to(const Dashbourd()),
                 leading: const Icon(
                   Icons.home,
                   color: AppColors.drawerContainerBGColor,
@@ -62,7 +66,9 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => const Problems(),
+                onTap: () => Get.to(
+                  const Problems(),
+                ),
                 leading: const Icon(
                   Icons.chat_rounded,
                   color: AppColors.drawerContainerBGColor,
@@ -75,7 +81,9 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => const FeatureRequest(),
+                onTap: () => Get.to(
+                  const FeatureRequest(),
+                ),
                 leading: const Icon(
                   Icons.language,
                   color: AppColors.drawerContainerBGColor,
@@ -88,7 +96,9 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                onTap: () => const MyLanguage(),
+                onTap: () => Get.to(
+                  const MyLanguage(),
+                ),
                 leading: const Icon(
                   Icons.translate,
                   color: AppColors.drawerContainerBGColor,
@@ -101,8 +111,11 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
+                onTap: () => Get.to(
+                  const MyLanguage(),
+                ),
                 leading: const Icon(
-                  Icons.circle_sharp,
+                  Icons.translate,
                   color: AppColors.drawerContainerBGColor,
                 ),
                 title: MyString(
@@ -112,6 +125,10 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
               ),
+
+              // terms of use
+              // privacy policy
+              //credit
             ],
           ),
         ],
