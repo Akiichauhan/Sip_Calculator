@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       color: AppColors.whiteColor,
       debugShowCheckedModeBanner: false,
-      home: const MYCheck(),
+      home: const Dashbourd(),
     );
   }
 }
